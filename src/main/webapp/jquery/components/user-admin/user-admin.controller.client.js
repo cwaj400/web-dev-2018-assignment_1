@@ -12,8 +12,8 @@ console.log(jQuery);
   var userService = new UserServiceClient();
 
   function main() {
-    tbody = $('tbody');
-    template = $('.template');
+    tbody = jQuery('tbody');
+    template = jQuery('.template');
     $('#createUserBtn').click(createUser);
     $('#deleteUserBtn').click(deleteUser(event));
     $('#editUserBtn').click(editUser(event));
@@ -29,6 +29,7 @@ console.log(jQuery);
 
   function createUser() {
     console.log('creating User');
+      tbody.css('color', 'red');
 
     var username = $('#usernameFld').val();
     var password = $('#passwordFld').val();
