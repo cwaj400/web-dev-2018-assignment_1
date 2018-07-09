@@ -1,16 +1,22 @@
 //IIFE
+
+
+console.log(jQuery);
+
 (function() {
 
   jQuery(main);
 
   var tbody;
   var template;
-  var userService = new UserServiceClient()
+  var userService = new UserServiceClient();
 
   function main() {
     tbody = $('tbody');
     template = $('.template');
-    $('#createUser').click(createUser);
+    $('#createUserBtn').click(createUser);
+    $('#deleteUserBtn').click(deleteUser(event));
+    $('#editUserBtn').click(editUser(event));
 
     findAllUsers();
   }
@@ -22,12 +28,13 @@
   }
 
   function createUser() {
-    console.log('createUser');
+    console.log('creating User');
 
     var username = $('#usernameFld').val();
     var password = $('#passwordFld').val();
     var firstName = $('#firstNameFld').val();
     var lastName = $('#lastNameFld').val();
+    var phone = $('#phone');
 
     var user = {
       username: username,
