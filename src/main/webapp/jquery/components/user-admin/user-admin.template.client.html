@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html>
 <title>Admin Page</title>
 
@@ -7,6 +6,7 @@
     <h1 id="title">User Admin</h1>
     <table class="table">
         <thead>
+
         <tr>
             <th>Username</th>
             <th>Password</th>
@@ -19,29 +19,29 @@
         </tr>
         <tr>
             <th>
-                <input id="usernameFld" class="form-control" placeholder="username"/>
+                <input id="usernameFld" placeholder="username"/>
             </th>
             <th>
-                <input id="passwordFld" class="form-control" type="password"
+                <input id="passwordFld" type="password"
                        placeholder="password"/>
             </th>
             <th>
-                <input id="firstNameFld" class="form-control" placeholder="first name"/>
+                <input id="firstNameFld" placeholder="first name"/>
             </th>
             <th>
-                <input id="lastNameFld" class="form-control" placeholder="last name"/>
+                <input id="lastNameFld" placeholder="last name"/>
             </th>
             <th>
-                <input id="phone" type="tel" class="form-control" placeholder="(xxx) xxx xxxx"/>
+                <input id="phoneFld" type="tel" placeholder="(xxx) xxx xxxx"/>
             </th>
             <th>
-                <input id="email" type="email" class="form-control" placeholder="email"/>
+                <input id="emailFld" type="email" placeholder="email"/>
             </th>
             <th>
-                <input id="dob" type="date" name="dob">
+                <input id="dobInput" type="date" name="dob">
             </th>
             <th>
-                <select>
+                <select id="roleFld">
                     <option value="student">Student</option>
                     <option value="faculty">Faculty</option>
                     <option value="admin">Admin</option>
@@ -67,9 +67,9 @@
                 <div>
                     <button id="deleteUserBtn" class="delete btn btn-danger">Delete</button>
                 </div>
-                <div>
+
                     <button id="editUserBtn" class="edit btn btn-danger">Edit</button>
-                </div>
+
             </th>
         </tr>
         </tbody>
@@ -88,5 +88,4 @@
         integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
         crossorigin="anonymous"></script>
 <script src="user-admin.controller.client.js"></script>
-
 </html>

@@ -99,4 +99,7 @@ function User(username, password, firstName, lastName, email, phone, role, dob) 
     return this.dob;
   }
 
+
+
+
 }
