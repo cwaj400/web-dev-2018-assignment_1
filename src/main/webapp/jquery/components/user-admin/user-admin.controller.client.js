@@ -59,7 +59,7 @@
 
         console.log(usrObjStr);
 
-        fetch('/components', {
+        fetch("/user-admin", {
             method: 'post',
             body: usrObjStr,
             headers: {
