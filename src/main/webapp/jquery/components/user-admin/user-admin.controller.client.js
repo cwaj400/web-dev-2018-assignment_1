@@ -59,7 +59,7 @@
 
         console.log(usrObjStr);
 
-        fetch('/register', {
+        fetch('/components', {
             method: 'post',
             body: usrObjStr,
             headers: {
