@@ -1,7 +1,15 @@
 package webdev.models;
 
+
+import javax.persistence.*;
+
+@Entity
 public class User {
+
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
   private int id;
+
   private String username;
   private String password;
   private String firstName;
@@ -9,15 +17,28 @@ public class User {
   private String email;
   private String phone;
   private String role;
-  private Date dob;
+  private String dob;
+
+  public User(String username, String password, String firstName, String lastName,
+              String email, String phone, String role, String dob) {
+    this.username = username;
+    this.password = password;
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.email = email;
+    this.phone = phone;
+    this.role = role;
+    this.dob = dob;
+  }
 
   public int getId() {
-    return id;
+    return this.id;
   }
 
   public void setId(int id) {
     this.id = id;
   }
+
 
   public void setUsername(String username) {
     this.username = username;
@@ -47,7 +68,7 @@ public class User {
     this.role = role;
   }
 
-  public void setDob(Date dob) {
+  public void setDob(String dob) {
     this.dob = dob;
   }
 
@@ -80,7 +101,7 @@ public class User {
     return role;
   }
 
-  public Date getDob() {
+  public String getDob() {
     return dob;
   }
 }
