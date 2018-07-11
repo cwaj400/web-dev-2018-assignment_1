@@ -13,6 +13,7 @@
         var dob = $('#dobInput');
         var role = $('#roleFld');
         var createBtn = $('#createUserBtn');
+        console.log("hello there");
 
         var tbody;
         var template;
@@ -22,9 +23,10 @@
         //var userService = new UserServiceClient();
 
         function main() {
+            console.log("in main");
             //tbody = jQuery('tbody');
             //template = jQuery('.template');
-            createBtn.click(createUser());
+            createBtn.click(createUser);
             // $('#deleteUserBtn').click(deleteUser(event));
             // $('#editUserBtn').click(editUser(event));
         }
@@ -61,10 +63,9 @@
             var usrObjStr = JSON.stringify(usrObj);
 
             console.log(usrObjStr);
-            var url = ('d');
 
-            fetch('/user-admin', {
-                method: 'get',
+            fetch('/api/user', {
+                method: 'post',
                 body: usrObjStr,
                 headers: {
                     'Content-Type': 'application/json'

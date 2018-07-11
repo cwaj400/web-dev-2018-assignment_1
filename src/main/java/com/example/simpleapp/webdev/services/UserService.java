@@ -14,16 +14,17 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 
-
+@RestController
 public class UserService {
 
   @Autowired
   UserRepository repository;
 
-  @PostMapping("/user-admin")
+  @PostMapping("/api/user")
   public User register(@RequestBody User user) {
     return repository.save(user);
   }
@@ -72,8 +73,8 @@ public class UserService {
   }
 
 
-  @GetMapping("/api/user/{userId}")
-  public User findUserById(@PathVariable("userId") int userId) {
+  @GetMapping(value = "/api/user", params = "userID")
+  public User findUserById(@RequestParam("userId") int userId) {
     Optional<User> data = repository.findById(userId);
     if (data.isPresent()) {
       return data.get();
@@ -81,8 +82,8 @@ public class UserService {
     return null;
   }
 
-  @GetMapping("/api/user/{userId}")
-  public User findUserUsername(@PathVariable("username") String username) {
+  @GetMapping(value = "/api/user/", params = "username")
+  public User findUserUsername(@RequestParam("username") String username) {
     Optional<User> data = repository.findByUsername(username);
     if (data.isPresent()) {
       return data.get();
