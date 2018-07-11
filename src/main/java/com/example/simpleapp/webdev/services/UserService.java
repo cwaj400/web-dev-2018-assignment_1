@@ -1,4 +1,7 @@
-package webdev.services;
+package com.example.simpleapp.webdev.services;
+
+import com.example.simpleapp.webdev.models.User;
+import com.example.simpleapp.webdev.repositories.UserRepository;
 
 import java.util.List;
 import java.util.Optional;
@@ -11,10 +14,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
-
-import webdev.models.User;
-import webdev.repositories.UserRepository;
-
 
 
 @RestController
@@ -31,16 +30,16 @@ public class UserService {
 
   @PostMapping("/login")
   public List<User> login(@RequestBody User user) {
-    return (List<User>) repository.findUserByCredentials(user.getUsername(), user.getPassword());
+    return (List<User>) repository.findUserByUsernameAndPassword(user.getUsername(), user.getPassword());
   }
 
 
-  @DeleteMapping("/api/user/{userId}")
+  @DeleteMapping("/api/user-admin/{userId}")
   public void deleteUser(@PathVariable("userId") int id) {
     repository.deleteById(id);
   }
 
-  @GetMapping("/api/user")
+  @GetMapping("/api/user-admin")
   public List<User> findAllUsers() {
     return (List<User>) repository.findAll();
   }
@@ -83,7 +82,7 @@ public class UserService {
 
   @GetMapping("/api/user/{userId}")
   public User findUserUsername(@PathVariable("username") String username) {
-    Optional<User> data = repository.findUserByName(username);
+    Optional<User> data = repository.findByUsername(username);
     if (data.isPresent()) {
       return data.get();
     }

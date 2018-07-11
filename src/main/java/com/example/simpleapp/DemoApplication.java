@@ -4,10 +4,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 
-import webdev.repositories.UserRepository;
 
-
-@ComponentScan(basePackageClasses = UserRepository.class)
+@ComponentScan(basePackages = {"com.example.simpleapp"})
 @SpringBootApplication
 public class DemoApplication {
 
@@ -15,4 +13,3 @@ public class DemoApplication {
     SpringApplication.run(DemoApplication.class, args);
   }
 }
-
