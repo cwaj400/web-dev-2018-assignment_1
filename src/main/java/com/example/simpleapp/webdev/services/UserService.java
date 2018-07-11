@@ -36,12 +36,12 @@ public class UserService {
   }
 
 
-  @DeleteMapping("/api/user-admin/{userId}")
+  @DeleteMapping("/api/user/{userId}")
   public void deleteUser(@PathVariable(value = "userId") int id) {
     repository.deleteById(id);
   }
 
-  @GetMapping("/api/user-admin")
+  @GetMapping("/api/user")
   public List<User> findAllUsers() {
     return (List<User>) repository.findAll();
   }

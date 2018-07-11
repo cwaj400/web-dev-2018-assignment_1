@@ -21,6 +21,10 @@ public class User {
   private String role;
   private String dob;
 
+  public User() {
+    //Empty
+  }
+
   public User(String username, String password, String firstName, String lastName,
               String email, String phone, String role, String dob) {
     this.username = username;
