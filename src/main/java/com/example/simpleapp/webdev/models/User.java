@@ -1,7 +1,9 @@
 package com.example.simpleapp.webdev.models;
 
 
+
 import javax.persistence.*;
+
 
 @Entity
 public class User {

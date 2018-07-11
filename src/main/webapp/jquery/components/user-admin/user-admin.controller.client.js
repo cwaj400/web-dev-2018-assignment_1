@@ -3,70 +3,74 @@
 
 (function () {
 
-    jQuery(main);
-    var userNameFld = $('#usernameFld');
-    var password = $('#passwordFld');
-    var phone = $('#phone');
-    var firstName = $('#firstNameFld');
-    var lastName = $('#lastNameFld');
-    var email = $('#emailFld');
-    var dob = $('#dobInput');
-    var role = $('#roleFld');
 
-    var tbody;
-    var template;
+        var userNameFld = $('#usernameFld');
+        var password = $('#passwordFld');
+        var phone = $('#phone');
+        var firstName = $('#firstNameFld');
+        var lastName = $('#lastNameFld');
+        var email = $('#emailFld');
+        var dob = $('#dobInput');
+        var role = $('#roleFld');
+        var createBtn = $('#createUserBtn');
 
-    //var userService = new UserServiceClient();
+        var tbody;
+        var template;
 
-    function main() {
-        tbody = jQuery('tbody');
-        //template = jQuery('.template');
-        $('#createUserBtn').click(createUser());
-        // $('#deleteUserBtn').click(deleteUser(event));
-        // $('#editUserBtn').click(editUser(event));
-    }
+        jQuery(main);
 
-    // function findAllUsers() {
-    //     userService
-    //         .findAllUsers()
-    //         .then(renderUsers);
-    // }
+        //var userService = new UserServiceClient();
 
-    function createUser() {
-        console.log('creating user...');
+        function main() {
+            //tbody = jQuery('tbody');
+            //template = jQuery('.template');
+            createBtn.click(createUser());
+            // $('#deleteUserBtn').click(deleteUser(event));
+            // $('#editUserBtn').click(editUser(event));
+        }
 
-        var usernameStr = userNameFld.val();
-        var passwordStr = password.val();
-        var firstnameStr = firstName.val();
-        var lastnameStr = lastName.val();
-        var phoneStr = phone.val();
-        var emailStr = email.val();
-        var dobStr = dob.val();
-        var roleStr = role.val();
+        // function findAllUsers() {
+        //     userService
+        //         .findAllUsers()
+        //         .then(renderUsers);
+        // }
 
-        var usrObj = {
-            username: usernameStr,
-            password: passwordStr,
-            firstName: firstnameStr,
-            lastName: lastnameStr,
-            phone: phoneStr,
-            email: emailStr,
-            dob: dobStr,
-            role: roleStr
-        };
+        function createUser() {
+            console.log('creating user...');
 
-        var usrObjStr = JSON.stringify(usrObj);
+            var usernameStr = userNameFld.val();
+            var passwordStr = password.val();
+            var firstnameStr = firstName.val();
+            var lastnameStr = lastName.val();
+            var phoneStr = phone.val();
+            var emailStr = email.val();
+            var dobStr = dob.val();
+            var roleStr = role.val();
 
-        console.log(usrObjStr);
+            var usrObj = {
+                dob: dobStr,
+                email: emailStr,
+                firstName: firstnameStr,
+                lastName: lastnameStr,
+                password: passwordStr,
+                phone: phoneStr,
+                role: roleStr,
+                username: usernameStr,
+            };
 
-        fetch("/user-admin", {
-            method: 'post',
-            body: usrObjStr,
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        });
-    }
+            var usrObjStr = JSON.stringify(usrObj);
+
+            console.log(usrObjStr);
+            var url = ('d');
+
+            fetch('/user-admin', {
+                method: 'get',
+                body: usrObjStr,
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+        }
 
         // function renderUsers(users) {
         //     tbody.empty();

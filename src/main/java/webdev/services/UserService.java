@@ -23,9 +23,14 @@ public class UserService {
   @Autowired
   UserRepository repository;
 
-  @PostMapping("/register")
+  @PostMapping("/user-admin")
   public User register(@RequestBody User user) {
     return repository.save(user);
+  }
+  
+  @GetMapping("/user-admin")
+  public String getMap() {
+	return "Hello from service";
   }
 
 

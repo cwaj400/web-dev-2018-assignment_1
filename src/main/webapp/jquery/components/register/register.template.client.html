@@ -1,32 +1,28 @@
 <h1 id="admintitle">Register</h1>
 
-<table class="table" border="2">
-  <thead>
-    <tr>
-      <th>Username</th>
-      <th>Password</th>
-      <th>First Name</th>
-      <th>Last Name</th>
-      <th>Email</th>
-      <th>&nbsp;</th>
-      <th>&nbsp;</th>
-    </tr>
-  </thead>
-  <tr class="wbdv-form">
 
-    <td><input id="usernameFld" class="form-control" placeholder="Username" type="text" /></td>
+<div>
+    <label for="usernameRegFld">
+        Username</label>
+    <input type="text" id="usernameRegFld" placeholder="Username">
+</div>
 
-    <td><input id="passwordFld" class="form-control" placeholder="Password" type="password" /></td>
+<div>
+    <label for="passwordRegFld">
+        Password</label>
+    <input type="password" id="passwordRegFld" placeholder="Password">
+</div>
 
-    <td><input id="firstNameFld" class="form-control" placeholder="First Name" type="text" /></td>
+<div>
+    <label for="validatePasswordFld">
+        Validate Password
+    </label>
+    <input type="password" id="validatePasswordFld" placeholder="Password">
+</div>
 
-    <td><input id="lastNameFld" class="form-control" placeholder="Last Name" type="text"/></td>
+<td>
+    <button>Register</button>
+</td>
 
-    <td><input id="email" class="form-control"
-    placeholder="last-name.first-initial@husky.neu.edu" type="email"/></td>
-    <td>
-      <button>Add Person</button>
-    </td>
-  </tr>
-</table>
-<a href="../components/login/login.template.client.html">Login</a>
+<a href="../login/login.template.client.html">Login</a>
+<script src="register.controller.client.js"></script>
