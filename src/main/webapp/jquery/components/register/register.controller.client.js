@@ -1,33 +1,55 @@
 (function () {
 
-    var registerBtn = jQuery('#registerBtn');
+    var userservice = new UserServiceClient();
+    var registerBtn = jQuery('#regBtn');
     var usernameFld = $('#username');
-    var passwordFld = $('#password');
-    var password2Fld = $('#password2');
+    var passwordFld = $('#passwordFld');
+    var verifyPassword = $('#verifyPasswordFld');
 
 
+    $(main);
 
-    registerBtn.click(registerHandler);
+    function main() {
+        registerBtn.click(register);
+    }
 
-    function registerHandler() {
+
+    function register() {
         var usernameStr = usernameFld.val();
         var passwordStr = passwordFld.val();
-        var password2Str = password2Fld.val();
+        var verifyPasswordStr = verifyPassword.val();
 
         var userObj = {
             username: usernameStr,
             password: passwordStr
         };
 
-        var userObjStr = JSON.stringify(userObj);
-
-        fetch('/register', {
-            method: 'post',
-            body: userObjStr,
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        });
-
+        if (usernameStr === ""
+            || usernameStr === null
+        || passwordStr === ""
+        || passwordStr === null
+        || verifyPasswordStr === ""
+        || verifyPasswordStr === null) {
+            alert("Please fill in every field");
+        }
+        else if (passwordStr !== verifyPasswordStr) {
+            console.log(usernameStr);
+            alert("Passwords do not match");
+        }
+        else if (isInDB(usernameStr)) {
+            alert("That user name has been taken - IDENTITY THEFT IS NOT A JOKE, JIM!");
+        }
+        else {
+            userservice.createUser(userObj);
+        }
     }
-})();
+
+    function isInDB(usernameStr) {
+        for (var i = 0; i < users.length; i++) {
+            if (userservice.get().username === usernameStr) {
+                return true;
+            }
+        }
+    }
+})
+();
