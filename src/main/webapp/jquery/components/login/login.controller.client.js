@@ -11,26 +11,27 @@
     }
 
     function login() {
-      var usr = {
-        username: usernameFld.val(),
-        password: password.val()
-};
-        var usrObj = JSON.stringify(usr);
+        var passwordStr = password.val();
+        var username = usernameFld.val();
 
-        if (usrStr && passwordStr !== null
-        || usrStr && passwordStr === "") {
-            userService.login(usr)
-                .then(navigateToProfile, failHandler);
+        if (username && passwordStr !== null
+            || username && passwordStr === "") {
+
+            userService.login(username, passwordStr).then(navigateToProfile).catch(failHandler);
+        } else {
+            location.reload();
+            alert('No user with credentials found. Please try again.');
         }
     }
 
     function navigateToProfile() {
         window.location.href = "../profile/profile.template.client.html";
     }
+
     function failHandler(response) {
         if (response.status === 200) {
             alert("Welcome!");
-            window.location.href = '/jquery/profile/profile.template.client.html';
+            window.location.href = '../profile/profile.template.client.html';
         } else {
             alert('No user with credentials found. Please try again.');
         }

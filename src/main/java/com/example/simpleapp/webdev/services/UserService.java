@@ -19,6 +19,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpSession;
+
 
 @RestController
 public class UserService {
@@ -27,14 +29,27 @@ public class UserService {
   UserRepository repository;
 
   @PostMapping("/api/user")
-  public User register(@RequestBody User user) {
-    return repository.save(user);
+  public User register(@RequestBody User user, HttpSession session) {
+    User cu = repository.save(user);
+    session.setAttribute("currentUser", cu);
+
+
+    return cu;
+  }
+
+  @GetMapping("/checkLogin")
+  public User checkLogin(HttpSession session) {
+    return (User) session.getAttribute("currentUser");
   }
 
 
-  @PostMapping("/login")
-  public User login(@RequestBody User user) {
-    return repository.findUserByUsernameAndPassword(user.getUsername(), user.getPassword());
+  @PostMapping("/api/login")
+  public User login(@RequestBody User user, HttpSession session) {
+    session.setAttribute("currentUser",
+            repository.findUserByUsernameAndPassword(user.getUsername(), user.getPassword()));
+    System.out.println(session.getAttribute("currentUser"));
+    System.out.println(repository.findUserByUsernameAndPassword(user.getUsername(), user.getPassword()));
+    return (User) session.getAttribute("currentUser");
   }
 
 
@@ -60,11 +75,21 @@ public class UserService {
     Optional<User> data = repository.findById(userId);
     if (data.isPresent()) {
       User user = data.get();
-//      user.setFirstName(newUser.getFirstName());
-      newUser.setId(user.getId());
-      return repository.save(newUser);
+      user.setDob(newUser.getDob());
+      user.setFirstName(newUser.getFirstName());
+      user.setLastName(newUser.getLastName());
+      user.setRole(newUser.getRole());
+      user.setUsername(newUser.getUsername());
+      user.setPhone(newUser.getPhone());
+      return repository.save(user);
     }
     return null;
+  }
+
+  @GetMapping("/profile")
+  public Optional<User> profile(HttpSession session) {
+    User currentUser = (User) session.getAttribute("currentUser");
+    return repository.findById(currentUser.getId());
   }
 
 
@@ -76,6 +101,13 @@ public class UserService {
     }
     return null;
   }
+
+  @PostMapping("/api/logout")
+  public User logout(HttpSession session) {
+    session.invalidate();
+    return null;
+  }
+
 
 //  @GetMapping(value = "/api/user/", params = "username")
 //  public User findUserUsername(@RequestParam("username") String username) {

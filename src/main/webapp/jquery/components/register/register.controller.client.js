@@ -24,27 +24,22 @@
             password: passwordStr
         };
 
-        var userObjStr = JSON.stringify(userObj);
+        console.log(usernameStr);
 
-        if (usernameStr === ""
-            || usernameStr === null
-            || passwordStr === ""
-            || passwordStr === null
-            || verifyPasswordStr === ""
-            || verifyPasswordStr === null) {
+        if (usernameStr !== '' && usernameStr !== null
+            && passwordStr !== "" && passwordStr !== null
+            && verifyPasswordStr !== "" && verifyPasswordStr !== null) {
+            if (passwordStr === verifyPasswordStr) {
+                userservice.createUser(userObj)
+                    .then(registrationSuccessful).catch(registrationFailed);
+            } else {
+                alert("Passwords do not match");
+                location.reload();
+            }
+        }
+        else {
             alert("Please fill in every field");
             location.reload();
-        } else if (passwordStr !== verifyPasswordStr && ((passwordStr !== null)
-                                                         || (verifyPasswordStr !== null))) {
-            fetch('/register', {
-                method: 'post',
-                body: userObjStr,
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                'credentials': 'include'
-            }).then(registrationSuccessful, registrationFailed)
-
         }
     }
 

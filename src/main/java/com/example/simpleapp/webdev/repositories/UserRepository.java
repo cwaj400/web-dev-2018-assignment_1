@@ -16,6 +16,7 @@ import javax.persistence.NamedStoredProcedureQueries;
 @Repository
 public interface UserRepository extends CrudRepository<User, Integer> {
 
+  @Query("SELECT user FROM User user WHERE user.username=:username")
   Optional<User> findByUsername(String username);
 
   @Query("SELECT user FROM User user WHERE user.username=:username AND user.password=:password")

@@ -10,7 +10,6 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 
-@ComponentScan(basePackages = {"com.example.simpleapp"})
 @SpringBootApplication
 public class DemoApplication {
 
