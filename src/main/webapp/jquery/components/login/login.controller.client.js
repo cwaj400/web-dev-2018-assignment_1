@@ -11,19 +11,31 @@
     }
 
     function login() {
+
         var usrStr = usernameFld.val();
         var passwordStr = password.val();
 
+        var usr = {
+            username: usrStr,
+            password: passwordStr
+        };
+        var usrObj = JSON.stringify(usr);
+
         if (usrStr && passwordStr !== null
-        || usrStr && passwordStr === "") {
-            userService.login(usrStr, passwordStr)
-                .then(loginAlertHandler());
+            || (usrStr && passwordStr === "")) {
+            userService.login(usr)
+                .then(navigateToProfile, failHandler);
         } else {
-            alert('Could not log in!');
+            alert("Please fill in every field");
+            location.reload();
         }
     }
 
-    function loginAlertHandler(response) {
+    function navigateToProfile() {
+        window.location.href = "../profile/profile.template.client.html";
+    }
+
+    function failHandler(response) {
         if (response.status === 200) {
             alert("Welcome!");
             window.location.href = '/jquery/profile/profile.template.client.html';

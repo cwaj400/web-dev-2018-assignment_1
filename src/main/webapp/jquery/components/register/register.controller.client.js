@@ -17,6 +17,7 @@
 
         usernameStr = usernames.val();
         passwordStr = passwords.val();
+        verifyPasswordStr = verifyPassword.val();
 
         var userObj = {
             username: usernameStr,
@@ -25,15 +26,26 @@
 
         var userObjStr = JSON.stringify(userObj);
 
-        fetch('/register', {
-            method: 'post',
-            body: userObjStr,
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            'credentials': 'include'
-        }).then(registrationSuccessful, registrationFailed)
+        if (usernameStr === ""
+            || usernameStr === null
+            || passwordStr === ""
+            || passwordStr === null
+            || verifyPasswordStr === ""
+            || verifyPasswordStr === null) {
+            alert("Please fill in every field");
+            location.reload();
+        } else if (passwordStr !== verifyPasswordStr && ((passwordStr !== null)
+                                                         || (verifyPasswordStr !== null))) {
+            fetch('/register', {
+                method: 'post',
+                body: userObjStr,
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                'credentials': 'include'
+            }).then(registrationSuccessful, registrationFailed)
 
+        }
     }
 
     function registrationSuccessful() {
@@ -51,16 +63,7 @@
 //         var passwordStr = passwords.val();
 //         var verifyPasswordStr = verifyPassword.val();
 //
-//         if (usernameStr === ""
-//             || usernameStr === null
-//             || passwordStr === ""
-//             || passwordStr === null
-//             || verifyPasswordStr === ""
-//             || verifyPasswordStr === null) {
-//             alert("Please fill in every field");
-//             location.reload();
-//         } else if (passwordStr !== verifyPasswordStr && ((passwordStr !== null)
-//                                                          || (verifyPasswordStr !== null))) {
+
 //
 //
 //             console.log(usernameStr);
@@ -74,18 +77,9 @@
 //             fetch("/register"), {
 //
 //             }
-//             userservice.register(new User(usernameStr, passwordStr)).then(registrationAlertHandler());
-//         }
-//     }
-//
-//     function registrationAlertHandler(response) {
-//         if (response.status === 200) {
-//             alert("Welcome " + userTemp);
-//             window.location.href = '/jquery/profile/profile.template.client.html';
-//         } else {
-//             alert('Oops. That Username is already taken. Pick a new one!');
-//         }
-//     }
-//
-// })
+//             userservice.register(new User(usernameStr,
+// passwordStr)).then(registrationAlertHandler()); } }  function registrationAlertHandler(response)
+// { if (response.status === 200) { alert("Welcome " + userTemp); window.location.href =
+// '/jquery/profile/profile.template.client.html'; } else { alert('Oops. That Username is already
+// taken. Pick a new one!'); } }  })
 })();

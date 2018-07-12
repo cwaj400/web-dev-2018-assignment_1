@@ -21,21 +21,27 @@
         <label for="passwordLoginFld">
             Password</label>
         <input type="password" id="passwordLoginFld" placeholder="password">
-        <a class="logInBtn btn-lg btn-success"
-           href="../login/login.template.client.html" role="button" id="loginLogBtn">
+        <a role="button" class="logInBtn btn-lg btn-success" href="login.template.client.html"
+            id="loginLogBtn">
             Log In</a>
     </tr>
 </div>
 
 </body>
-</html>
-
-
 <em>Don't have an account?</em>
-<a class="logInBtn btn-lg btn-info" href="../register/register.template.client.html">Register</a>
+<a role="button" class="logInBtn btn-lg btn-success" href="../register/register.template.client.html">Register</a>
 
 <link rel="stylesheet" href=
         "https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"/>
 
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+
+<script src="../../services/user.service.client.js"></script>
+
 <link href="login.style.client.css" rel="stylesheet"/>
 <script type="text/javascript" src="../../models/user.model.client.js"></script>
+<script src="login.controller.client.js"></script>
+
+</html>

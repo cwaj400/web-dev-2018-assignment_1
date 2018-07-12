@@ -3,65 +3,66 @@
     <title>Registration Page</title>
 </head>
 
-<body>
-<div>
-    <h1>
-        <b>Register Here</b>
+<tr>
+    <div>
+        <h1>
+            <b>Register Here</b>
 
-    </h1>
-</div>
-
-
-<div>
-    <label for="usernameFld">
-        Username
-    </label>
-    <input type="text"
-           placeholder="Type Username"
-           id="usernameFld"/> </br>
-
-</div>
-
-<div>
-    <label for="passwordFld">
-        Password
-    </label>
-    <input type="password"
-           placeholder="Type Password"
-           id="passwordFld"/> </br>
-</div>
-
-<div>
-    <label for="verifyPasswordFld">
-        Validate Password
-    </label>
-    <input type="password"
-           placeholder="Verify Password"
-           id="verifyPasswordFld"/> </br>
-</div>
-<a class="registerBtn btn-lg btn-info"
-   role="button" id="regBtn">
-    Register</a>
-
-<a class="loginBtn btn-lg btn-success" href="../login/login.template.client.html" id="loginBtn">
-    Back To Login
-</a>
-</body>
+        </h1>
+    </div>
 
 
-<meta charset="UTF-8">
-<title>User Admin</title>
-<link rel="stylesheet"
-      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"/>
-<link rel="stylesheet"
-      href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
-<link href="register.style.client.css" rel="stylesheet"/>
-<script src="https://code.jquery.com/jquery-3.3.1.min.js"
-        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-        crossorigin="anonymous"></script>
+    <div>
+        <label for="usernameFld">
+            Username
+        </label>
+        <input type="text"
+               placeholder="Type Username"
+               id="usernameFld"/> </br>
 
-<script src="../../services/user.service.client.js"></script>
-<link href="register.style.client.css" rel="stylesheet">
-<script src="register.controller.client.js"></script>
-<script type="text/javascript" src="../../models/user.model.client.js"></script>
+    </div>
+
+    <div>
+        <label for="passwordFld">
+            Password
+        </label>
+        <input type="password"
+               placeholder="Type Password"
+               id="passwordFld"/> </br>
+    </div>
+
+
+    <div>
+        <label for="verifyPasswordFld">
+            Validate Password
+        </label>
+        <input type="password"
+               placeholder="Verify Password"
+               id="verifyPasswordFld"/> </br>
+    </div>
+    <a class="registerBtn btn-lg btn-success"
+       role="button" id="regBtn" href="register.template.client.html">
+        Register</a>
+
+    <a class="loginBtn btn-lg btn-success" href="../login/login.template.client.html" id="loginBtn">
+        Back To Login
+    </a>
+    </body>
+
+
+    <meta charset="UTF-8">
+    <title>User Admin</title>
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <link href="register.style.client.css" rel="stylesheet"/>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+            integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+            crossorigin="anonymous"></script>
+
+    <script src="../../services/user.service.client.js"></script>
+    <link href="register.style.client.css" rel="stylesheet">
+    <script src="register.controller.client.js"></script>
+    <script type="text/javascript" src="../../models/user.model.client.js"></script>
 </html>

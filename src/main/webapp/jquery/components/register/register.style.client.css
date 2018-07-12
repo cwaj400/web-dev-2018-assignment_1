@@ -5,16 +5,3 @@ body {
     background-position: center;
     font-family: sans-serif;
 }
-
-b {
-    font-size: 90px;
-    font-family: sans-serif;
-}
-
-a:hover {
-    background-color: yellow;
-}
-
-.button:hover {
-    background-color: yellow;
-}
