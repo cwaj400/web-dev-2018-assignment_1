@@ -5,9 +5,9 @@
     var passwordFld = $('#password');
     var password2Fld = $('#password2');
 
+
+
     registerBtn.click(registerHandler);
-
-
 
     function registerHandler() {
         var usernameStr = usernameFld.val();

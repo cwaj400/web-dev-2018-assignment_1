@@ -4,49 +4,63 @@
 </head>
 
 <body>
-<h1>
-    <b>Register Here</b>
-
-</h1>
 <div>
-    <label for="username">
+    <h1>
+        <b>Register Here</b>
+
+    </h1>
+</div>
+
+
+<div class="container">
+    <label for="usernameFld">
         Username
     </label>
     <input type="text"
-           placeholder="alice"
-           id="username"/>
+           placeholder="Type Username"
+           id="usernameFld"/>
 </div>
 
 <div>
-    <label for="password">
+    <label for="passwordFld">
         Password
     </label>
     <input type="password"
-           placeholder="1234qwerasdf"
-           id="password"/>
+           placeholder="Type Password"
+           id="passwordFld"/>
 </div>
 
 <div>
-    <label for="password2">
+    <label for="verifyPasswordFld">
         Validate Password
     </label>
     <input type="password"
-           placeholder="1234qwerasdf"
-           id="password2"/>
+           placeholder="Verify Password"
+           id="verifyPasswordFld"/>
 </div>
 <a class="registerBtn btn-lg btn-info"
-   href="../register/register.template.client.html" role="button">
+   href="../register/register.template.client.html" role="button" id="regBtn">
     Register</a>
 
-<a class="loginBtn btn-lg btn-success" href="../login/login.template.client.html">
+<a class="loginBtn btn-lg btn-success" href="../login/login.template.client.html" id="loginBtn">
     Back To Login
 </a>
-
-
-<link rel="stylesheet" href=
-        "https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"/>
-
-<script src="register.controller.client.js"></script>
-
 </body>
+
+
+<meta charset="UTF-8">
+<title>User Admin</title>
+<link rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"/>
+<link rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
+<link href="register.style.client.css" rel="stylesheet"/>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+
+<script src="../../services/user.service.client.js"></script>
+<link href="register.style.client.css" rel="stylesheet">
+<script src="register.controller.client.js"></script>
+<script type="text/javascript" src="../../models/user.model.client.js"></script>
 </html>
