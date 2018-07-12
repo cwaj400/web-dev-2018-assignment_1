@@ -12,14 +12,18 @@
     var dob = $('#dobInput');
     var role = $('#roleFld');
 
+    var usrIdUpdating = 0;
+
     //Buttons
     var createBtn = $('#createUserBtn');
     var editUsrBtn = $('#editUserBtn');
+    var updateUsrBtn = $('#updateUserBtn');
 
     console.log("hello there");
 
     var tbody;
     var template;
+    var inputRow;
 
     jQuery(main);
 
@@ -29,10 +33,11 @@
         console.log("in main");
         tbody = jQuery('tbody');
         template = jQuery('.template');
+        inputRow = jQuery('.inputRow');
         createBtn.click(createUser);
-        //editUsrBtn.click(findUserByID);
         $('#deleteUserBtn').click(deleteUser);
         $('#editUserBtn').click(editUser);
+        $('#updateUserBtn').click(updateUser);
 
         findAllUsers();
     }
@@ -74,17 +79,19 @@
             username: usernameStr,
         };
 
-        var usrObjStr = JSON.stringify(usrObj);
+        userService.createUser(usrObj).then(findAllUsers);
 
-        console.log(usrObjStr);
-
-        fetch('/api/user', {
-            method: 'post',
-            body: usrObjStr,
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        });
+        // var usrObjStr = JSON.stringify(usrObj);
+        //
+        // console.log(usrObjStr);
+        //
+        // fetch('/api/user', {
+        //     method: 'post',
+        //     body: usrObjStr,
+        //     headers: {
+        //         'Content-Type': 'application/json'
+        //     }
+        // });
     }
 
     function renderUsers(users) {
@@ -143,8 +150,62 @@
             .then(findAllUsers);
     }
 
-    function editUser(event) {
-        console.log('editUser');
+    function updateUser(event) {
         console.log($(event.currentTarget));
+
+        var updateUsrBtn = $(event.currentTarget);
+
+        var usernameStr = userNameFld.val();
+        var passwordStr = password.val();
+        var firstnameStr = firstName.val();
+        var lastnameStr = lastName.val();
+        var phoneStr = phone.val();
+        var emailStr = email.val();
+        var dobStr = dob.val();
+        var roleStr = role.val();
+
+        var usrObj = {
+            dob: dobStr,
+            email: emailStr,
+            firstName: firstnameStr,
+            lastName: lastnameStr,
+            password: passwordStr,
+            phone: phoneStr,
+            role: roleStr,
+            username: usernameStr
+        };
+
+        userService.updateUser(usrIdUpdating, usrObj).then(findAllUsers);
+
+        console.log('updating user...');
+
+    }
+
+    function editUser(event) {
+        var editUsrBtn = $(event.currentTarget);
+
+        var usrId = editUsrBtn.parent().parent().attr('id');
+
+        userService.findUserById(usrId).then(function (user) {
+            userNameFld.val(user.username);
+            password.val(user.password);
+            phone.val(user.phone);
+            firstName.val(user.firstName);
+            lastName.val(user.lastName);
+            email.val(user.email);
+            dob.val(user.dob);
+            role.val(user.role);
+            console.log(inputRow.id);
+            inputRow.id = user.id;
+
+            usrIdUpdating = user.id;
+
+            console.log(inputRow.id);
+
+            console.log(user.id);
+            console.log("that should do it!");
+        });
+
+        console.log('editing user...');
     }
 })();

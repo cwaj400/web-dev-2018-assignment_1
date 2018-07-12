@@ -47,17 +47,10 @@ public class UserService {
   }
 
 
-
-
-
-
-
   @PostMapping("/register")
   public User createUser(@RequestBody User user) {
     return repository.save(user);
   }
-
-
 
 
   @PutMapping("/api/user/{userId}")
@@ -65,16 +58,16 @@ public class UserService {
     Optional<User> data = repository.findById(userId);
     if (data.isPresent()) {
       User user = data.get();
-      user.setFirstName(newUser.getFirstName());
-      repository.save(user);
-      return user;
+//      user.setFirstName(newUser.getFirstName());
+      newUser.setId(user.getId());
+      return repository.save(newUser);
     }
     return null;
   }
 
 
-  @GetMapping(value = "/api/user", params = "userID")
-  public User findUserById(@RequestParam("userId") int userId) {
+  @GetMapping("/api/user/{userId}")
+  public User findUserById(@PathVariable("userId") int userId) {
     Optional<User> data = repository.findById(userId);
     if (data.isPresent()) {
       return data.get();
