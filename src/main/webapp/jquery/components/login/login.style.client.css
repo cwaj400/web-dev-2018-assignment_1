@@ -1,8 +1,21 @@
-body{
+body {
     margin: 0;
     padding: 0;
     background: url(break_.jpg);
     background-size: cover;
     background-position: center;
     font-family: sans-serif;
+}
+
+b {
+  font-size: 90px;
+  font-family: sans-serif;
+}
+
+a:hover {
+    background-color: yellow;
+}
+
+.button:hover {
+  background-color: yellow;
 }

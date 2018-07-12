@@ -7,6 +7,8 @@
 
     registerBtn.click(registerHandler);
 
+
+
     function registerHandler() {
         var usernameStr = usernameFld.val();
         var passwordStr = passwordFld.val();

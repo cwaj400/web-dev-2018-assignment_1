@@ -1,28 +1,52 @@
-<h1 id="admintitle">Register</h1>
+<html>
+<head>
+    <title>Registration Page</title>
+</head>
 
+<body>
+<h1>
+    <b>Register Here</b>
 
+</h1>
 <div>
-    <label for="usernameRegFld">
-        Username</label>
-    <input type="text" id="usernameRegFld" placeholder="Username">
+    <label for="username">
+        Username
+    </label>
+    <input type="text"
+           placeholder="alice"
+           id="username"/>
 </div>
 
 <div>
-    <label for="passwordRegFld">
-        Password</label>
-    <input type="password" id="passwordRegFld" placeholder="Password">
+    <label for="password">
+        Password
+    </label>
+    <input type="password"
+           placeholder="1234qwerasdf"
+           id="password"/>
 </div>
 
 <div>
-    <label for="validatePasswordFld">
+    <label for="password2">
         Validate Password
     </label>
-    <input type="password" id="validatePasswordFld" placeholder="Password">
+    <input type="password"
+           placeholder="1234qwerasdf"
+           id="password2"/>
 </div>
+<a class="registerBtn btn-lg btn-info"
+   href="../register/register.template.client.html" role="button">
+    Register</a>
 
-<td>
-    <button>Register</button>
-</td>
+<a class="loginBtn btn-lg btn-success" href="../login/login.template.client.html">
+    Back To Login
+</a>
 
-<a href="../login/login.template.client.html">Login</a>
+
+<link rel="stylesheet" href=
+        "https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"/>
+
 <script src="register.controller.client.js"></script>
+
+</body>
+</html>

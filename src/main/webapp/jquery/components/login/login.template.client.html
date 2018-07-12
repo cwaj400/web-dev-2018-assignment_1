@@ -1,4 +1,14 @@
-<h1>Login</h1>
+<html>
+<head>
+    <title>Login Page</title>
+</head>
+
+
+<body>
+<h1>
+    <b>Login Here</b>
+</h1>
+
 
 <div>
     <label for="usernameFld">
@@ -7,10 +17,24 @@
 </div>
 
 <div>
-    <label f>
-        Password</label>
-    <input type="password" placeholder="password">
+    <tr>
+        <label for="passwordFld">
+            Password</label>
+        <input type="password" id="passwordFld" placeholder="password">
+        <a class="logInBtn btn-lg btn-success"
+           href="../login/login.template.client.html" role="button">
+            Log In</a>
+    </tr>
 </div>
 
-<button type="button" id="loginBtn">Login</button>
-<a href="../register/register.template.client.html">Register</a>
+</body>
+</html>
+
+
+<em>Don't have an account?</em>
+<a class="logInBtn btn-lg btn-info" href="../register/register.template.client.html">Register</a>
+
+<link rel="stylesheet" href=
+        "https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"/>
+
+<link href="login.style.client.css" rel="stylesheet"/>
