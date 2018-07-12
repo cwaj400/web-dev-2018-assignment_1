@@ -14,7 +14,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 
@@ -75,12 +77,19 @@ public class UserService {
     return null;
   }
 
-  @GetMapping(value = "/api/user/", params = "username")
-  public User findUserUsername(@RequestParam("username") String username) {
-    Optional<User> data = repository.findByUsername(username);
-    if (data.isPresent()) {
-      return data.get();
-    }
-    return null;
+//  @GetMapping(value = "/api/user/", params = "username")
+//  public User findUserUsername(@RequestParam("username") String username) {
+//    Optional<User> data = repository.findByUsername(username);
+//    if (data.isPresent()) {
+//      return data.get();
+//    }
+//    return null;
+//  }
+
+
+  @RequestMapping(value = "/users/find", method = RequestMethod.GET)
+  @ResponseBody
+  public Optional<User> findByUsername(@RequestParam("username") String username) {
+    return repository.findByUsername(username);
   }
 }

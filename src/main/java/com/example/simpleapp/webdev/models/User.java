@@ -1,7 +1,6 @@
 package com.example.simpleapp.webdev.models;
 
 
-
 import javax.persistence.*;
 
 
@@ -23,6 +22,11 @@ public class User {
 
   public User() {
     //Empty
+  }
+
+  public User(String username, String password) {
+    this.username = username;
+    this.password = password;
   }
 
   public User(String username, String password, String firstName, String lastName,

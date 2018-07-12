@@ -2,10 +2,10 @@
 
     var userservice = new UserServiceClient();
     var registerBtn = jQuery('#regBtn');
-    var usernameFld = $('#username');
-    var passwordFld = $('#passwordFld');
+    var usernames = $('#usernameFld');
+    var passwords = $('#passwordFld');
     var verifyPassword = $('#verifyPasswordFld');
-
+    var userTemp;
 
     $(main);
 
@@ -13,43 +13,43 @@
         registerBtn.click(register);
     }
 
-
     function register() {
-        var usernameStr = usernameFld.val();
-        var passwordStr = passwordFld.val();
-        var verifyPasswordStr = verifyPassword.val();
+        var usernameStr = usernames.val();
+        userTemp = usernameStr;
 
-        var userObj = {
-            username: usernameStr,
-            password: passwordStr
-        };
+        var passwordStr = passwords.val();
+        var verifyPasswordStr = verifyPassword.val();
 
         if (usernameStr === ""
             || usernameStr === null
-        || passwordStr === ""
-        || passwordStr === null
-        || verifyPasswordStr === ""
-        || verifyPasswordStr === null) {
+            || passwordStr === ""
+            || passwordStr === null
+            || verifyPasswordStr === ""
+            || verifyPasswordStr === null) {
             alert("Please fill in every field");
-        }
-        else if (passwordStr !== verifyPasswordStr) {
+            location.reload();
+        } else if (passwordStr !== verifyPasswordStr && ((passwordStr !== null)
+                                                         || (verifyPasswordStr !== null))) {
             console.log(usernameStr);
             alert("Passwords do not match");
-        }
-        else if (isInDB(usernameStr)) {
-            alert("That user name has been taken - IDENTITY THEFT IS NOT A JOKE, JIM!");
-        }
-        else {
-            userservice.createUser(userObj);
+            location.reload();
+        } else if (userservice.findByUsername(usernameStr) === null) {
+            alert("IDENTITY THEFT IS NOT A CRIME JIM");
+            location.reload();
+        } else {
+            alert("creating user...");
+            userservice.register(new User(usernameStr, passwordStr)).then(registrationAlertHandler());
         }
     }
 
-    function isInDB(usernameStr) {
-        for (var i = 0; i < users.length; i++) {
-            if (userservice.get().username === usernameStr) {
-                return true;
-            }
+    function registrationAlertHandler(response) {
+        if (response.status === 200) {
+            alert("Welcome " + userTemp);
+            window.location.href = '/jquery/profile/profile.template.client.html';
+        } else {
+            alert('Oops. That Username is already taken. Pick a new one!');
         }
     }
+
 })
 ();

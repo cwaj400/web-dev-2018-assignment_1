@@ -5,7 +5,7 @@
     var userService = new UserServiceClient();
     var userNameFld = $('#usernameFld');
     var password = $('#passwordFld');
-    var phone = $('#phoneFld');
+    var phone = $('#phoneFlds');
     var firstName = $('#firstNameFld');
     var lastName = $('#lastNameFld');
     var email = $('#emailFld');

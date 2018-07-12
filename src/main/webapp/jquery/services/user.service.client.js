@@ -4,6 +4,7 @@ function UserServiceClient() {
   this.deleteUser = deleteUser;
   this.findUserById = findUserById;
   this.updateUser = updateUser;
+  this.findByUsername = findByUsername;
   this.login = login;
   this.url =
     'http://localhost:8080/api/user';
@@ -12,7 +13,7 @@ function UserServiceClient() {
   var self = this;
 
   function login(username, password) {
-    return fetch(self.loginUrl, {
+    return fetch(self.login, {
       method: 'post',
       body: JSON.stringify({
         username: username,
@@ -60,6 +61,13 @@ function UserServiceClient() {
         return response.json();
       });
   }
+
+    function findByUsername(username) {
+    return fetch(self.url + "?username=" + username).then(function (response) {
+        return response.json();
+    })
+
+    }
 
   function createUser(user) {
     return fetch(self.url, {
