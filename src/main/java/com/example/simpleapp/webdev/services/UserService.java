@@ -33,8 +33,8 @@ public class UserService {
 
 
   @PostMapping("/login")
-  public List<User> login(@RequestBody User user) {
-    return (List<User>) repository.findUserByUsernameAndPassword(user.getUsername(), user.getPassword());
+  public User login(@RequestBody User user) {
+    return repository.findUserByUsernameAndPassword(user.getUsername(), user.getPassword());
   }
 
 

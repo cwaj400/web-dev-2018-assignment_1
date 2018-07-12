@@ -11,30 +11,22 @@
     }
 
     function login() {
-
-        var usrStr = usernameFld.val();
-        var passwordStr = password.val();
-
-        var usr = {
-            username: usrStr,
-            password: passwordStr
-        };
+      var usr = {
+        username: usernameFld.val(),
+        password: password.val()
+};
         var usrObj = JSON.stringify(usr);
 
         if (usrStr && passwordStr !== null
-            || (usrStr && passwordStr === "")) {
+        || usrStr && passwordStr === "") {
             userService.login(usr)
                 .then(navigateToProfile, failHandler);
-        } else {
-            alert("Please fill in every field");
-            location.reload();
         }
     }
 
     function navigateToProfile() {
         window.location.href = "../profile/profile.template.client.html";
     }
-
     function failHandler(response) {
         if (response.status === 200) {
             alert("Welcome!");
