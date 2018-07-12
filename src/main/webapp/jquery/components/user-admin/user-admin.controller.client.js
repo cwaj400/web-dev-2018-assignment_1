@@ -5,7 +5,7 @@
     var userService = new UserServiceClient();
     var userNameFld = $('#usernameFld');
     var password = $('#passwordFld');
-    var phone = $('#phone');
+    var phone = $('#phoneFld');
     var firstName = $('#firstNameFld');
     var lastName = $('#lastNameFld');
     var email = $('#emailFld');
@@ -76,22 +76,10 @@
             password: passwordStr,
             phone: phoneStr,
             role: roleStr,
-            username: usernameStr,
+            username: usernameStr
         };
 
         userService.createUser(usrObj).then(findAllUsers);
-
-        // var usrObjStr = JSON.stringify(usrObj);
-        //
-        // console.log(usrObjStr);
-        //
-        // fetch('/api/user', {
-        //     method: 'post',
-        //     body: usrObjStr,
-        //     headers: {
-        //         'Content-Type': 'application/json'
-        //     }
-        // });
     }
 
     function renderUsers(users) {
@@ -122,7 +110,7 @@
         clone.find('.lastName')
             .html(user.lastName);
 
-        clone.find('.phone')
+        clone.find('.phoneFld')
             .html(user.phone);
 
         clone.find('.email')
@@ -175,10 +163,30 @@
             username: usernameStr
         };
 
-        userService.updateUser(usrIdUpdating, usrObj).then(findAllUsers);
+        console.log(userService.updateUser(usrIdUpdating, usrObj));
 
-        console.log('updating user...');
-
+        if (usernameStr === null
+            || usernameStr === ""
+            || passwordStr === null
+            || passwordStr === ""
+            || firstnameStr === null
+            || firstnameStr === ""
+            || lastnameStr === null
+            || lastnameStr === ""
+            || phoneStr === null
+            || phoneStr === ""
+            || emailStr === null
+            || emailStr === ""
+            || dobStr === null
+            || dobStr === ""
+            || roleStr === null
+            || roleStr === "") {
+            alert("Please Fill All Required Field");
+        }
+        else {
+            userService.updateUser(usrIdUpdating, usrObj).then(findAllUsers);
+            console.log('updating user...');
+        }
     }
 
     function editUser(event) {
@@ -208,4 +216,5 @@
 
         console.log('editing user...');
     }
-})();
+})
+();
