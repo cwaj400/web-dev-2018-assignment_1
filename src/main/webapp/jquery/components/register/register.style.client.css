@@ -1,7 +1,7 @@
 body {
     width: 900px;
     margin: 0 auto;
-    padding: 100;
+    padding: 100px;
     background: url(../../resources/cloud.jpg);
     background-size: cover;
     background-position: center;

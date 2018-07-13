@@ -14,13 +14,12 @@
         var passwordStr = password.val();
         var username = usernameFld.val();
 
-        if (username && passwordStr !== null
-            || username && passwordStr === "") {
+        if (username && passwordStr !== null) {
 
             userService.login(username, passwordStr).then(navigateToProfile).catch(failHandler);
         } else {
             location.reload();
-            alert('No user with credentials found. Please try again.');
+            alert('Please fill in all fields.');
         }
     }
 

@@ -9,7 +9,7 @@
     $(main);
 
     function main() {
-
+      
         $username = $("#username");
         $firstName = $("#firstName");
         $lastName = $("#lastName");
