@@ -8,3 +8,5 @@ This simple program was built using the following technologies:
     • Client Side: HTML, JavaScript, CSS/Bootstrap for styling
     • Server Side: Java & SQL. Java uses RestFull API's and JPA (Java Persistance Library).
                    The User model is mapped to a SQL schema which tracks changes.
+
+Just wanted to check if development branch works as expected.
