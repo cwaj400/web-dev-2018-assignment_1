@@ -13,6 +13,11 @@ public class Course {
   private String title;
 
   private String professor;
+  //@Temporal(TemporalType.DATE)
+  private Date created;
+
+  //@Temporal(TemporalType.DATE)
+  private Date modified;
 
   public Course(String title, String professor, Date created, Date modified) {
     this.title = title;
@@ -21,11 +26,6 @@ public class Course {
     this.modified = modified;
   }
 
-  //@Temporal(TemporalType.DATE)
-  private Date created;
-
-  //@Temporal(TemporalType.DATE)
-  private Date modified;
 
   public void setProfessor(String professor) {
     this.professor = professor;
