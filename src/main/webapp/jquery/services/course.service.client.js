@@ -1,7 +1,7 @@
 function CourseServiceClient() {
     this.createCourse = createCourse;
     this.findAllCourses = findAllCourses;
-    this.findCourseById = findCourseById;
+    this.findCourseById = findCourseByID;
     this.deleteCourse = deleteCourse;
     this.updateCourse = updateCourse;
     this.url = '/api/course';
@@ -9,20 +9,22 @@ function CourseServiceClient() {
 
     function createCourse(course) {
         return fetch(self.url, {
-            method: 'POST',
+            method: 'post',
             body: JSON.stringify(course),
             headers: {
                 'content-type': 'application/json'
             }
         });
     }
+
     function findAllCourses(callback) {
         return $.ajax({
         url: self.url,
         success: callback
         });
     }
-    function findCourseById(courseId) {
+
+    function findCourseByID(courseId) {
         return fetch(
             self.url + '/' + courseId)
             .then(function(response) {
