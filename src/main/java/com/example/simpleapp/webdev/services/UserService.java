@@ -66,7 +66,8 @@ public class UserService {
 
   @PostMapping("/register")
   public User createUser(@RequestBody User user) {
-    return repository.save(user);
+    repository.save(user);
+    return user;
   }
 
 
@@ -107,16 +108,6 @@ public class UserService {
     session.invalidate();
     return null;
   }
-
-
-//  @GetMapping(value = "/api/user/", params = "username")
-//  public User findUserUsername(@RequestParam("username") String username) {
-//    Optional<User> data = repository.findByUsername(username);
-//    if (data.isPresent()) {
-//      return data.get();
-//    }
-//    return null;
-//  }
 
 
   @RequestMapping(value = "/users/find", method = RequestMethod.GET)
