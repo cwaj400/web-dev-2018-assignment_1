@@ -29,9 +29,9 @@ public class CourseService {
     return course;
   }
 
-  @DeleteMapping("/api/course/{id}")
-  public void deleteCourse(@PathVariable(value = "id") int id) {
-    courseRepository.deleteById(id);
+  @DeleteMapping("/api/course/{courseId}")
+  public void deleteCourse(@PathVariable(value = "courseId") int courseId) {
+    courseRepository.deleteById(courseId);
   }
 
   @GetMapping("/api/course")

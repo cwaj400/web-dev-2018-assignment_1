@@ -1,6 +1,7 @@
 package com.example.simpleapp.webdev.models;
 
 import java.sql.Date;
+import java.util.List;
 
 import javax.persistence.*;
 
@@ -11,6 +12,9 @@ public class Course {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private int id;
   private String title;
+
+  @OneToMany(mappedBy="course")
+  private List<Module> modules;
 
   private String professor;
   //@Temporal(TemporalType.DATE)
