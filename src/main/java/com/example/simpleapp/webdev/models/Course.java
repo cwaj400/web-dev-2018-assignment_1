@@ -13,7 +13,8 @@ public class Course {
   private int id;
   private String title;
 
-  @OneToMany(mappedBy="course")
+
+  @OneToMany(mappedBy = "course")
   private List<Module> modules;
 
   private String professor;
@@ -30,6 +31,14 @@ public class Course {
     this.modified = modified;
   }
 
+
+  public List<Module> getModules() {
+    return modules;
+  }
+
+  public void setModules(List<Module> modules) {
+    this.modules = modules;
+  }
 
   public void setProfessor(String professor) {
     this.professor = professor;
