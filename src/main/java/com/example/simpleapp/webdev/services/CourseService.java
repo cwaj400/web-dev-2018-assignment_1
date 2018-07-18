@@ -5,6 +5,7 @@ import com.example.simpleapp.webdev.models.User;
 import com.example.simpleapp.webdev.repositories.CourseRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,6 +19,7 @@ import java.util.Optional;
 
 
 @RestController
+@CrossOrigin(origins = "*", maxAge = 3600)
 public class CourseService {
 
   @Autowired
@@ -59,9 +61,6 @@ public class CourseService {
       }
       if (newCourse.getModified() != null) {
         dbCourse.setModified(newCourse.getModified());
-      }
-      if (newCourse.getProfessor() != null) {
-        dbCourse.setProfessor(newCourse.getProfessor());
       }
       if (newCourse.getTitle() != null) {
         dbCourse.setTitle(newCourse.getTitle());

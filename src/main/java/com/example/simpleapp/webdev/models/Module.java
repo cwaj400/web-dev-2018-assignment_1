@@ -2,11 +2,14 @@ package com.example.simpleapp.webdev.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Module {
@@ -14,11 +17,34 @@ public class Module {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private int id;
+
   private String title;
 
-  public Module(String title, Course course) {
+  @OneToMany(mappedBy="module")
+  private List<Lesson> lessons;
+
+
+  @ManyToOne
+  @JsonIgnore
+  private Course course;
+
+  public Module() {
+
+  }
+
+  public Module(String title, List<Lesson> lessons, Course course) {
     this.title = title;
+    this.lessons = lessons;
     this.course = course;
+  }
+
+
+  public List<Lesson> getLessons() {
+    return lessons;
+  }
+
+  public void setLessons(List<Lesson> lessons) {
+    this.lessons = lessons;
   }
 
   public int getId() {
@@ -44,10 +70,6 @@ public class Module {
   public void setCourse(Course course) {
     this.course = course;
   }
-
-  @ManyToOne
-  @JsonIgnore
-  private Course course;
 
 
 }
