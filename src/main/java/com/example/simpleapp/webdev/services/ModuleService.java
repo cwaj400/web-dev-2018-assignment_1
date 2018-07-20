@@ -35,8 +35,9 @@ public class ModuleService {
       Course course = data.get();
       newModule.setCourse(course);
       return moduleRepository.save(newModule);
+    } else {
+      return null;
     }
-    return null;
   }
 
   @GetMapping("/api/course/{courseId}/module")
@@ -47,14 +48,13 @@ public class ModuleService {
     if (data.isPresent()) {
       Course course = data.get();
       return course.getModules();
+    } else {
+      return null;
     }
-    return null;
   }
 
   @DeleteMapping("/api/module/{mId}")
   public void deleteModule(@PathVariable("mId") int moduleId) {
     moduleRepository.deleteById(moduleId);
   }
-
-
 }
