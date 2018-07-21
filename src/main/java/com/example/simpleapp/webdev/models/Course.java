@@ -1,7 +1,5 @@
 package com.example.simpleapp.webdev.models;
 
-import org.springframework.web.bind.annotation.CrossOrigin;
-
 import java.sql.Date;
 import java.util.List;
 
@@ -19,10 +17,8 @@ public class Course {
   @OneToMany(mappedBy = "course")
   private List<Module> modules;
 
-  //@Temporal(TemporalType.DATE)
   private Date created;
 
-  //@Temporal(TemporalType.DATE)
   private Date modified;
 
   public Course() {
