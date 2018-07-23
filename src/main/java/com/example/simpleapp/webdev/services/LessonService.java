@@ -34,9 +34,14 @@ public class LessonService {
   LessonRepository lessonRepository;
 
   @PostMapping("/api/course/{cid}/module/{mid}/lesson")
-  public Lesson createLesson(@RequestBody Lesson lesson) {
-    lessonRepository.save(lesson);
-    return lesson;
+  public Lesson createLesson(@PathVariable("mid") int moduleId, @RequestBody Lesson lesson) {
+    Optional<Module> data = moduleRepository.findById(moduleId);
+    if (data.isPresent()) {
+      Module module = data.get();
+      lesson.setModule(module);
+      return lessonRepository.save(lesson);
+    }
+    return null;
   }
 
   @GetMapping("/api/course/{CID}/module/{MID}/lesson")
@@ -63,7 +68,7 @@ public class LessonService {
   }
 
 
-    @GetMapping("/api/lesson/{LID}")
+  @GetMapping("/api/lesson/{LID}")
   public Lesson findLessonById(@PathVariable("LID") int lessondId) {
     Optional<Lesson> data = lessonRepository.findById(lessondId);
     if (data.isPresent()) {
@@ -77,7 +82,7 @@ public class LessonService {
   @PutMapping("/api/lesson/{id}")
   public Lesson updateLesson(@PathVariable("id") int lessonId, @RequestBody Lesson newLesson) {
     Optional<Lesson> data = lessonRepository.findById(lessonId);
-    if(data.isPresent()) {
+    if (data.isPresent()) {
       Lesson lesson = data.get();
       lesson.setTitle(newLesson.getTitle());
       lessonRepository.save(lesson);
