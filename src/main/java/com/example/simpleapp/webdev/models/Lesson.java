@@ -2,11 +2,14 @@ package com.example.simpleapp.webdev.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Lesson {
@@ -21,9 +24,13 @@ public class Lesson {
   @JsonIgnore
   private Module module;
 
+  @OneToMany(mappedBy="lesson")
+  private List<Widget> widgets;
+
   public Lesson() {
 
   }
+
 
   public int getId() {
     return id;
@@ -47,5 +54,12 @@ public class Lesson {
 
   public void setModule(Module module) {
     this.module = module;
+  }
+
+  public List<Widget> getWidgets() {
+    return widgets;
+  }
+  public void setWidgets(List<Widget> widgets) {
+    this.widgets = widgets;
   }
 }

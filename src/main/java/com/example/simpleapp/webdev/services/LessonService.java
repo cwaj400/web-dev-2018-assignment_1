@@ -2,6 +2,7 @@ package com.example.simpleapp.webdev.services;
 
 import com.example.simpleapp.webdev.models.Lesson;
 import com.example.simpleapp.webdev.models.Module;
+import com.example.simpleapp.webdev.models.Widget;
 import com.example.simpleapp.webdev.repositories.CourseRepository;
 import com.example.simpleapp.webdev.repositories.LessonRepository;
 import com.example.simpleapp.webdev.repositories.ModuleRepository;
@@ -19,6 +20,8 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 import java.util.Optional;
 
+import javax.persistence.OneToMany;
+
 
 @RestController
 @CrossOrigin(origins = "*", maxAge = 3600)
@@ -32,6 +35,9 @@ public class LessonService {
 
   @Autowired
   LessonRepository lessonRepository;
+
+  @OneToMany(mappedBy="topic")
+  private List<Widget> widgets;
 
   @PostMapping("/api/course/{cid}/module/{mid}/lesson")
   public Lesson createLesson(@PathVariable("mid") int moduleId, @RequestBody Lesson lesson) {
